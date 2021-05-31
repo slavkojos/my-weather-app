@@ -45,7 +45,9 @@ export default function Home() {
                 <WeatherStat padding={1} value={Math.round(data.main.temp_min)} units={"°"} type="Min" />
                 <Box>
                   <Text pl={1} fontSize="6xl">{`${Math.round(data.main.temp)}°`}</Text>
-                  <Text fontSize="xl">{capitalize(data.weather[0].description)}</Text>
+                  <Text fontWeight="700" fontSize="xl">
+                    {capitalize(data.weather[0].description)}
+                  </Text>
                 </Box>
                 <WeatherStat padding={1} value={Math.round(data.main.temp_max)} units={"°"} type="Max" />
               </Flex>

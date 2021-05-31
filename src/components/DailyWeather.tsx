@@ -4,11 +4,13 @@ import { capitalize } from "../functions/capitalize";
 export default function WeatherStat(props) {
   return (
     <Flex direction="column" justify="center" align="center">
-      <Text my={1} fontSize="sm">
+      <Text fontSize="sm" fontWeight="600">
         {props.day}
       </Text>
-      <Image boxSize="64px" my={1} src={`http://openweathermap.org/img/wn/${props.weatherIcon}@4x.png`} />
-      <Text my={1}>{props.temp + "°"}</Text>
+      <Image boxSize="64px" src={`http://openweathermap.org/img/wn/${props.weatherIcon}@4x.png`} />
+      <Text fontWeight="700" fontSize="lg">
+        {props.temp + "°"}
+      </Text>
     </Flex>
   );
 }

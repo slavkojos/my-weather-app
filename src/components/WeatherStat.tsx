@@ -4,7 +4,7 @@ import { capitalize } from "../functions/capitalize";
 export default function WeatherStat(props) {
   return (
     <Flex direction="column" justify="center" align="center">
-      <Text pl={props.padding} my={1}>
+      <Text pl={props.padding} my={1} fontWeight="800">
         {props.value + props.units}
       </Text>
       <Text fontSize="sm">{capitalize(props.type)}</Text>
