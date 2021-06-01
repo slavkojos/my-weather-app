@@ -1,6 +1,6 @@
 import { Container, Flex, Button, Text, Image, Skeleton, Input } from "@chakra-ui/react";
 import React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import NoResults from "../assets/no-results.svg";
 import { BiArrowBack } from "react-icons/bi";
 import { Link as RouterLink } from "react-router-dom";
@@ -27,6 +27,10 @@ export default function Search(props) {
       );
     }
   };
+
+  useEffect(() => {
+    citySearchRef.current.focus();
+  });
 
   console.log("data", data);
 
