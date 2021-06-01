@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useState } from "react";
 
 export const App = () => {
-  const [selectedCity, setCity] = useState("london");
+  const [selectedCity, setCity] = useState(localStorage.getItem("default") || "london");
   return (
     <ChakraProvider theme={theme}>
       <Router>

@@ -8,7 +8,18 @@ export default function SearchResults({ data, setCity }) {
       console.log("ok");
       return data.list.map((item, index) => {
         return (
-          <Button key={index} variant="outline" my={2} w={"75%"} as={RouterLink} to="/" onClick={() => setCity(item.name.toLowerCase())}>
+          <Button
+            key={index}
+            variant="outline"
+            my={2}
+            w={"75%"}
+            as={RouterLink}
+            to="/"
+            onClick={() => {
+              localStorage.setItem("default", item.name.toLowerCase());
+              setCity(item.name.toLowerCase());
+            }}
+          >
             <Flex justify="space-between" w={"100%"}>
               <Text>{item.name + ", " + item.sys.country}</Text>
               <Image src={`http://openweathermap.org/images/flags/${item.sys.country.toLowerCase()}.png`} />
