@@ -1,4 +1,4 @@
-import { Box, Container, Flex, IconButton, Text, Image } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { capitalize } from "../functions/capitalize";
 
 export default function WeatherStat(props) {

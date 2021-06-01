@@ -1,6 +1,5 @@
-import { Box, Container, Flex, IconButton, Text, Image } from "@chakra-ui/react";
+import { Flex, Text, Image } from "@chakra-ui/react";
 import React from "react";
-import { capitalize } from "../functions/capitalize";
 export default function WeatherStat(props) {
   return (
     <Flex direction="column" justify="center" align="center">

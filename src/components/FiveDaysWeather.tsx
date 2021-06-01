@@ -12,10 +12,10 @@ export default function FivedaysWeather(props) {
     setLoading(true);
     setData(await getWeatherForDays(props.lat, props.lon));
     setLoading(false);
-  }, []);
+  }, [props.lat, props.lon]);
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
   console.log(data);
   return (
     <Box w={"100%"}>

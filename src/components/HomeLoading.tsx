@@ -1,4 +1,4 @@
-import { Box, Container, Flex, IconButton, Text, Image, Skeleton } from "@chakra-ui/react";
+import { Box, Flex, Text, Image, Skeleton } from "@chakra-ui/react";
 import React from "react";
 
 export default function HomeLoading() {

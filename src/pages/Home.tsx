@@ -1,4 +1,4 @@
-import { Box, Container, Flex, IconButton, Text, Image, Skeleton, Link } from "@chakra-ui/react";
+import { Box, Container, Flex, IconButton, Text, Image, Link } from "@chakra-ui/react";
 import React from "react";
 import { GoSearch } from "react-icons/go";
 import { IoMdSettings } from "react-icons/io";
@@ -18,10 +18,10 @@ export default function Home({ selectedCity }) {
     setLoading(true);
     setData(await getWeatherForLocation(selectedCity));
     setLoading(false);
-  }, []);
+  }, [selectedCity]);
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
   console.log(data);
   console.log(Object.keys(data));
 
