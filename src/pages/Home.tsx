@@ -1,4 +1,4 @@
-import { Box, Container, Flex, IconButton, Text, Image, Skeleton } from "@chakra-ui/react";
+import { Box, Container, Flex, IconButton, Text, Image, Skeleton, Link } from "@chakra-ui/react";
 import React from "react";
 import { GoSearch } from "react-icons/go";
 import { IoMdSettings } from "react-icons/io";
@@ -8,12 +8,15 @@ import { getWeatherForLocation } from "../functions/index";
 import { useEffect, useState, useCallback } from "react";
 import { capitalize } from "../functions/capitalize";
 import FiveDaysWeather from "../components/FiveDaysWeather";
-export default function Home() {
+import { Link as RouterLink } from "react-router-dom";
+import dateformat from "dateformat";
+export default function Home({ selectedCity }) {
+  const now = new Date();
   const [data, setData] = useState("");
   const [isLoading, setLoading] = useState(true);
   const getData = useCallback(async () => {
     setLoading(true);
-    setData(await getWeatherForLocation("makarska"));
+    setData(await getWeatherForLocation(selectedCity));
     setLoading(false);
   }, []);
   useEffect(() => {
@@ -29,7 +32,9 @@ export default function Home() {
       ) : (
         <Box>
           <Flex justify="space-between">
-            <IconButton variant="ghost" size="lg" aria-label="Search" icon={<GoSearch />} isRound />
+            <Link as={RouterLink} to="/search">
+              <IconButton variant="ghost" size="lg" aria-label="Search" icon={<GoSearch />} isRound />
+            </Link>
             <IconButton variant="ghost" size="lg" aria-label="Settings" icon={<IoMdSettings />} isRound />
           </Flex>
           <Box w={"100%"} px={4}>
@@ -37,14 +42,14 @@ export default function Home() {
               <Text fontSize="4xl" my={2}>
                 {data.name}
               </Text>
-              <Text fontSize="md">Thursday 28 April 2018</Text>
+              <Text fontSize="md">{dateformat(now, "dddd, mmmm dS, h:MM TT")}</Text>
             </Flex>
             <Flex direction="column" justify="center" align="center" w={"100%"}>
               <Image boxSize={"200px"} src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`} my={1} />
               <Flex justify="space-around" w={"100%"} align="center">
                 <WeatherStat padding={1} value={Math.round(data.main.temp_min)} units={"°"} type="Min" />
                 <Box>
-                  <Text pl={1} fontSize="6xl">{`${Math.round(data.main.temp)}°`}</Text>
+                  <Text pl={1} align="center" fontSize="6xl">{`${Math.round(data.main.temp)}°`}</Text>
                   <Text fontWeight="700" fontSize="xl">
                     {capitalize(data.weather[0].description)}
                   </Text>
