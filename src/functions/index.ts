@@ -33,7 +33,7 @@ export const getWeatherForDays = async (lat: number, lon: number) => {
 export const searchForCity = async (city: string) => {
   try {
     const apiKey = process.env.REACT_APP_SECRET_KEY;
-    const url = `https://thingproxy.freeboard.io/fetch/https://openweathermap.org/data/2.5/find?&q=${city}&type=like&sort=population&cnt=30&appid=${apiKey}`;
+    const url = `https://openweathermap.org/data/2.5/find?&q=${city}&type=like&sort=population&cnt=30&appid=${apiKey}`;
     const response = await fetch(url);
     const data = await response.json();
     return data;
